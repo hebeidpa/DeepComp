@@ -1,0 +1,72 @@
+# Core Dependencies
+torch==2.1.2                # Minimum version for gastricnnUNet (original: >=2.1.2)
+torchvision==0.16.2         # Matches torch 2.1.2 (original: 0.15.2 for pathomic)
+pytorch-lightning==2.2.1    # Original requirement from pathomic
+timm==0.9.8                 # Original from pathomic
+numpy==1.26.4               # Strict version from pathomic (satisfies gastricnnUNet's >=1.24)
+
+# Framework-Specific
+acvl-utils>=0.2.3,<0.3
+dynamic-network-architectures>=0.3.1,<0.4
+batchgenerators>=0.25.1
+batchgeneratorsv2>=0.2
+blosc2>=3.0.0b1
+open_clip_torch>=0.2.1
+webdataset>=0.2.31
+
+# Common Medical Imaging
+SimpleITK>=2.2.1
+dicom2nifti
+nibabel
+scikit-image>=0.19.3
+tifffile
+imagecodecs
+scikit-survival
+
+# Data Processing
+pandas
+scipy
+h5py
+pyarrow
+ruamel.yaml
+safetensors
+
+# NLP/Transformers
+transformers
+sentencepiece
+nltk
+rouge
+
+# Visualization
+matplotlib
+seaborn
+tensorboardX
+wandb
+graphviz
+opencv-python
+
+# Utilities
+tqdm
+requests
+Pillow
+ftfy
+future
+yacs
+einops
+accelerate
+blobfile
+fairscale
+mypy
+pytest
+
+# Version-Sensitive (Tested Combinations)
+torchmetrics==0.7.3         # Compatible with pytorch-lightning 2.2.1
+scikit-learn                # No version specified (use latest compatible)
+
+torch>=1.10.0
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=0.24.0
+openpyxl>=3.0.0
+joblib>=1.0.0
+ft-transformer==0.2.5
