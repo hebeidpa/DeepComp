@@ -1,6 +1,7 @@
 ## DeepComp model
 An Interpretable Deep Learning Model for Preoperative Prediction of Postoperative Complications in Gastric Cancer 
-<img src="aaa.png" width="700">
+<img width="1467" height="614" alt="aaa" src="https://github.com/user-attachments/assets/c0a287a2-17ad-4cf4-9136-29a9dbd3d984" />
+
 ## Overview
 ## This project mainly covers two core modules:
 - GastricNN-UNet: A nnU-Net-based CT segmentation model for gastric medical imaging.
@@ -17,13 +18,27 @@ An Interpretable Deep Learning Model for Preoperative Prediction of Postoperativ
 ## TabM
 ## Directory Structure
 ```plaintext
+feature extraction.py
 train.py
 test.py
 testOS.py
+shap.py
 ```
 ## Scripts
 
-### 1. Training Script (`train.py`)
+### 1. Feature Extraction Script (`feature extraction.py`)
+#### Functionality
+`feature_extraction.py` extracts multi-region deep imaging embeddings from gastric CT scans. The script reads CT volumes and ROI masks in NIfTI format, generates target lesion region (TLR), peritumoral region (PTR), and whole-slice/body-composition-context (BCC) representations, and uses MedGemma1.5 to encode each region into high-dimensional imaging features.
+
+MedGemma1.5 (https://huggingface.co/google/medgemma-1.5-4b-it)
+
+The extracted embeddings are saved as patient-level feature matrices and serve as imaging inputs for the DeepComp dual-task prediction framework, including complication prediction and OS prognostic risk estimation.
+#### Usage
+```bash
+python feature extraction.py --input ./ --roi ./ --out_dir ./ --model ./ --region  --peri_mm  --slice_axis  --rgb_mode triple --recursive
+```
+
+### 2. Training Script (`train.py`)
 #### Functionality
 Train the DeepComp classification model using 5-fold cross-validation to optimize model parameters and generate out-of-fold predictions.
 
@@ -34,7 +49,7 @@ Evaluate the classification model on the independent validation set using AUC an
 ```bash
 python train.py --train .csv --test .csv --label label --os_time OS_time --os_event OS_event --train_os_model --tabm_path ./tabm.py --out_dir ./ --device cuda --amp --use_focal --fs_enable --fs_alpha  --fs_corr_th  --fs_max_vars  --fs_inner_folds 5 --fs_repeats 3 --fs_min_freq 0.6 --keep_features  
 ```
-### 2. Testing Script (`test.py`)
+### 3. Testing Script (`test.py`)
 #### Functionality
 - Loads a trained model and evaluates it on the test dataset.
 - Saves the test evaluation results.
@@ -42,6 +57,15 @@ python train.py --train .csv --test .csv --label label --os_time OS_time --os_ev
 #### Usage
 ```bash
 python test.py
+```
+
+### 4. Shap Script (`shap.py`)
+#### Functionality
+- `shap_analysis.py` performs SHAP-based model interpretation for trained DeepComp models. It loads the saved TabM model weights and preprocessing parameters, applies the same feature normalization used during training, and estimates the contribution of each input feature to the model prediction.
+
+#### Usage
+```bash
+python shap.py
 ```
 ## Acknowledgements
  - We would like to express our sincere gratitude to all contributors and collaborators who supported this project. Special thanks to our research  - team members for their invaluable discussions and technical insights, which greatly enhanced the development and implementation of this work.
