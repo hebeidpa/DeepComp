@@ -1,5 +1,7 @@
 ## DeepComp model
 An Interpretable Deep Learning Model for Preoperative Prediction of Postoperative Complications in Gastric Cancer 
+
+
 <img width="1467" height="614" alt="aaa" src="https://github.com/user-attachments/assets/c0a287a2-17ad-4cf4-9136-29a9dbd3d984" />
 
 ## Overview
