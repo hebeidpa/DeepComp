@@ -1,5 +1,6 @@
 ## DeepComp model
 An Interpretable Deep Learning Model for Preoperative Prediction of Postoperative Complications in Gastric Cancer 
+<img src="aaa.png" width="700">
 ## Overview
 ## This project mainly covers two core modules:
 - GastricNN-UNet: A nnU-Net-based CT segmentation model for gastric medical imaging.
