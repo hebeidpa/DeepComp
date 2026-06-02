@@ -82,7 +82,7 @@ Accuracy: 0.8829
 Predictions saved to ./prediction.csv
 ```
 ### Acknowledgements
- - We would like to express our sincere gratitude to all contributors and collaborators who supported this project. Special thanks to our research  - team members for their invaluable discussions and technical insights, which greatly enhanced the development and implementation of this work.
+ - The project was built on many amazing repositories: MedGemma 1.5, nnU-Net, and VoxTell. We thank the authors and developers for their contributions.
 
  - We also acknowledge the open-source community and developers of libraries such as PyTorch, and scikit-learn, whose efforts made it possible to build and refine our models efficiently. Finally, we are grateful to the institutions and organizations that provided the datasets and computational resources necessary for completing this project.
 
