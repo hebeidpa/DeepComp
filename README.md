@@ -55,8 +55,8 @@ The DeepComp model can be accessed from [here](https://drive.google.com/file/d/1
 import torch
 from test_tabm_model import read_table, load_prep_yaml, encode_numeric_from_yaml, load_model
 device = "cuda" if torch.cuda.is_available() else "cpu"
-data = read_table("./Usage/data.csv")
-X_num, _ = encode_numeric_from_yaml(data.drop(columns=["label"], errors="ignore"), load_prep_yaml("./DeepComp_prep.yaml"))
+data = read_table("./Usage/feature.csv")
+X_num, _ = encode_numeric_from_yaml(data.drop(columns=["label"], errors="ignore"), load_prep_yaml("./final_prep.yaml"))
 model, _ = load_model("./Usage/final_best.pt", "./Usage/tabm.py", X_num.shape[1], device)
 ```
 2. Predict Patient Postoperative Complications Risk.
@@ -73,7 +73,7 @@ To reproduce the results in our paper, we provide a reproducible result on IVC-I
 - Put the extracted features to ./Evaluation/
 - Run the following command:
 ```python
-python3 test.py --data ./Evaluation/test.csv  --model_path ./Evaluation/final_best.pt --prep_yaml ./Evaluation/final_prep.yaml --tabm_path ./Evaluation/tabm.py --out_csv ./Evaluation/prediction.csv 
+python3 test.py --data ./Evaluation/data.csv  --model_path ./Evaluation/final_best.pt --prep_yaml ./Evaluation/final_prep.yaml --tabm_path ./Evaluation/tabm.py --out_csv ./Evaluation/prediction.csv 
 ```
 The AUC and accuracy will be printed to the screen, and the prediction results will be saved to ./Evaluation/prediction.csv.
 ```
