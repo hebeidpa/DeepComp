@@ -1,4 +1,4 @@
-### DeepComp model
+# DeepComp model
 An Interpretable Deep Learning Model for Preoperative Prediction of Postoperative Complications in Gastric Cancer 
 <img width="1467" height="614" alt="aaa" src="https://github.com/user-attachments/assets/c0a287a2-17ad-4cf4-9136-29a9dbd3d984" />
 ## Pre-requisites
@@ -20,7 +20,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### CT Image Processing Pipeline
+## CT Image Processing Pipeline
 Extract Image Feature Embeddings
 1. Download the pretrained [MedGemma1.5](https://huggingface.co/google/medgemma-1.5-4b-it) , put it to ./Processing/weights/ and load the model  
 ```python
@@ -45,9 +45,9 @@ for lab in sorted([int(x) for x in np.unique(roi_int) if x > 0]):
     slice_feats = extract_feats_from_pil_images(images, image_processor, vision, model.device, dtype)
     roi_feat = torch.nn.functional.normalize(slice_feats.mean(dim=0), dim=-1)  # ROI embedding
 ```
-### Basic Usage: Predict Postoperative Complications Risk with DeepComp
+## Basic Usage: Predict Postoperative Complications Risk with DeepComp
 
-## Model Download
+### Model Download
 The DeepComp model can be accessed from [here](https://drive.google.com/file/d/1Txp0wIdhqIBy1z_nvG98UPlx00wmPRKm/view?usp=drive_link).
 1. Load the DeepComp model
 ```python
@@ -67,7 +67,7 @@ pred = (prob >= 0.5).astype(int)
 print("Complication risk:", prob)
 print("Prediction:", pred)
 ```
-### Evaluation
+## Evaluation
 To reproduce the results in our paper, we provide a reproducible result on IVC-I dataset
 - First download our processed IVC-I frozen features [here](https://drive.google.com/file/d/1aszWi0EFluhO3AaJcq-f2MW8SSXJrr6q/view?usp=drive_link)
 - Put the extracted features to ./Evaluation/
