@@ -1,6 +1,7 @@
 # DeepComp model
-An Interpretable Deep Learning Model for Preoperative Prediction of Postoperative Complications in Gastric Cancer 
-<img width="1467" height="614" alt="aaa" src="https://github.com/user-attachments/assets/c0a287a2-17ad-4cf4-9136-29a9dbd3d984" />
+A Multimodal Deep Learning Model for Preoperative Prediction of Postoperative Complications in Gastric Cancer
+<img width="2227" height="748" alt="image" src="https://github.com/user-attachments/assets/377e1d62-0863-4880-af71-114cce3ed2ed" />
+
 ## Pre-requisites
 All experiments are run on a machine with
 - 1 × NVIDIA H20 GPU (96 GB HBM3)
@@ -82,7 +83,7 @@ Accuracy: 0.8829
 Predictions saved to ./prediction.csv
 ```
 ### Acknowledgements
- - The project was built on many amazing repositories: MedGemma 1.5, nnU-Net, and VoxTell. We thank the authors and developers for their contributions.
+ - The project was built on many amazing repositories: [MedGemma1.5](https://huggingface.co/google/medgemma-1.5-4b-it), [nnU-Net](https://github.com/mic-dkfz/nnunet), [Tabm](https://github.com/yandex-research/tabm),and [VoxTell](https://github.com/MIC-DKFZ/VoxTell). We thank the authors and developers for their contributions.
 
  - We also acknowledge the open-source community and developers of libraries such as PyTorch, and scikit-learn, whose efforts made it possible to build and refine our models efficiently. Finally, we are grateful to the institutions and organizations that provided the datasets and computational resources necessary for completing this project.
 
