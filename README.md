@@ -1,6 +1,6 @@
 # DeepComp model
 A Multimodal Deep Learning Model for Preoperative Prediction of Postoperative Complications in Gastric Cancer
-<img width="2227" height="748" alt="image" src="https://github.com/user-attachments/assets/377e1d62-0863-4880-af71-114cce3ed2ed" />
+<img width="2795" height="943" alt="image" src="https://github.com/user-attachments/assets/728277d8-453b-474a-b359-70c3b0adbd71" />
 
 ## Pre-requisites
 All experiments are run on a machine with
