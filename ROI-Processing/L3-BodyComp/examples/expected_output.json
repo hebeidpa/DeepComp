@@ -1,0 +1,18 @@
+{
+  "l3_slice_index": 178,
+  "n_slices_averaged": 1,
+  "spacing_zyx": [
+    1.4116315841674805,
+    0.8730469942092896,
+    0.8730469942092896
+  ],
+  "skeletal_muscle_area_cm2": 83.23,
+  "visceral_fat_area_cm2": 68.2,
+  "subcutaneous_fat_area_cm2": 141.41,
+  "intermuscular_fat_area_cm2": 61.11,
+  "total_fat_area_cm2": 270.71,
+  "vat_sat_ratio": 0.482,
+  "skeletal_muscle_mean_hu": 35.9,
+  "skeletal_muscle_index": null,
+  "notes": []
+}
