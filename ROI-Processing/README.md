@@ -20,17 +20,7 @@ ROI-Processing/
 
 ## 1. Gastric tumor and peritumoral ROI segmentation
 
-The `nnUNet/` folder contains the nnU-Net-based segmentation code copied from `Gastric-nnUNet`.
-
-Example command-line usage:
-
-```bash
-python ROI-Processing/nnUNet/inference.py \
-    --input ./demo_cases/case_001/venous_CT.nii.gz \
-    --output ./outputs/case_001/venous_tumor_peritumor_label.nii.gz
-```
-
-If the project is configured with nnU-Net v2, the inference command may also follow the standard nnU-Net format:
+If the project is configured with nnU-Net v2, the inference command follow the standard nnU-Net format:
 
 ```bash
 nnUNetv2_predict \
@@ -51,8 +41,8 @@ Example command-line usage:
 
 ```bash
 python ROI-Processing/L3-BodyComp/inference.py \
-    --input ./demo_cases/case_001/plain_CT.nii.gz \
-    --output ./outputs/case_001/plain_L3_bodycomp_label.nii.gz
+    --input ./*nii.gz \
+    --output ./outputs/*.nii.gz
 ```
 
 The output label is expected to include L3-level body composition regions, such as skeletal muscle, subcutaneous fat, and visceral fat.
