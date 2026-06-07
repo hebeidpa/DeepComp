@@ -48,7 +48,7 @@ The DeepComp model can be accessed from [here](https://drive.google.com/file/d/1
 import torch
 from test_tabm_model import read_table, load_prep_yaml, encode_numeric_from_yaml, load_model
 device = "cuda" if torch.cuda.is_available() else "cpu"
-data = read_table("./Usage/feature.csv")
+data = read_table("./Usage/example.csv")
 X_num, _ = encode_numeric_from_yaml(data.drop(columns=["label"], errors="ignore"), load_prep_yaml("./final_prep.yaml"))
 model, _ = load_model("./Usage/final_best.pt", "./Usage/tabm.py", X_num.shape[1], device)
 ```
