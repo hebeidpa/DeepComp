@@ -9,7 +9,7 @@ import torch
 from transformers import AutoProcessor, AutoModelForImageTextToText
 
 # 本地模型路径
-LOCAL_MODEL_PATH = "./ct"
+LOCAL_MODEL_PATH = "./Processing/weights/"
 
 
 def window_ct(slice_hu: np.ndarray, wl: float, ww: float) -> np.ndarray:
@@ -314,4 +314,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-#python extract_roi_feats.py --nii ct.nii.gz --roi roi_mask.nii.gz --out_dir out --k 16 --pad 10
