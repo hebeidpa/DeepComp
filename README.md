@@ -32,10 +32,10 @@ python  feature_extraction.py --nii ./Processing/CT/venous_CT.nii.gz --roi ./Pro
 ```
 
 ```python
---nii ./Processing/CT/venous_CT.nii.gz	                        Path to CT file
---roi ./Processing/Label/venous_tumor_peritumor_label.nii.gz	Path to ROI mask file
---out_dir out1	                                                Save outputs to out1 folder
---k -1	                                                        Use all slices containing ROI (no sampling)
+--nii ./Processing/CT/venous_CT.nii.gz	                         Path to CT file
+--roi ./Processing/Label/venous_tumor_peritumor_label.nii.gz	   Path to ROI mask file
+--out_dir ./Usage/output                                        Save outputs to out1 folder
+--k -1	                                                         Use all slices containing ROI (no sampling)
 --model  ./Processing/weights/                                  MedGemma1.5 HuggingFace model path 
 ```
 ## Basic Usage: Predict Postoperative Complications Risk with DeepComp
