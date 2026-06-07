@@ -128,7 +128,7 @@ def main():
     ap.add_argument("--k", type=int, default=16,
                     help="Max number of ROI-containing slices to use per ROI (uniform sampling). "
                          "If k<=0, use all ROI slices.")
-    ap.add_argument("--pad", type=int, default=10, help="Padding (pixels) around ROI bbox crop")
+    ap.add_argument("--pad", type=int, default=0, help="Padding (pixels) around ROI bbox crop")
 
     ap.add_argument("--save_roi_slice_feats", action="store_true",
                     help="Save per-slice ROI features for each ROI label")
