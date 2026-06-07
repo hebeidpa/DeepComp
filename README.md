@@ -27,23 +27,15 @@ Extract Image Feature Embeddings
 1. Download the pretrained [MedGemma1.5](https://huggingface.co/google/medgemma-1.5-4b-it) , put it to ./Processing/weights/ and load the model  
 2. Use medgemma-1.5 to extract image embeddings
 ```python
-python  feature_extraction.py --nii venous_CT.nii.gz --roi venous_tumor_peritumor_label.nii.gz --out_dir out1  --k -1 --pad 10^C
+python  feature_extraction.py --nii ./Processing/CT/venous_CT.nii.gz --roi ./Processing/Label/venous_tumor_peritumor_label.nii.gz --out_dir ./Usage/output --k -1  --model  ./Processing/weights/
 
 ```
 
 ```python
 --nii ./Processing/CT/venous_CT.nii.gz	                        Path to CT file
-```
-```
 --roi ./Processing/Label/venous_tumor_peritumor_label.nii.gz	Path to ROI mask file
-```
-```
 --out_dir out1	                                                Save outputs to out1 folder
-```
-```
 --k -1	                                                        Use all slices containing ROI (no sampling)
-```
-```
 --model  ./Processing/weights/                                  MedGemma1.5 HuggingFace model path 
 ```
 ## Basic Usage: Predict Postoperative Complications Risk with DeepComp
@@ -60,7 +52,7 @@ data = read_table("./Usage/feature.csv")
 X_num, _ = encode_numeric_from_yaml(data.drop(columns=["label"], errors="ignore"), load_prep_yaml("./final_prep.yaml"))
 model, _ = load_model("./Usage/final_best.pt", "./Usage/tabm.py", X_num.shape[1], device)
 ```
-2. Predict Patient Postoperative Complications Risk.
+
 ```python
 from test_tabm_model import predict_proba
 prob = predict_proba(model, X_num, device)
