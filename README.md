@@ -26,18 +26,20 @@ pip install -r requirements.txt
 Extract Image Feature Embeddings
 1. Download the pretrained [MedGemma1.5](https://huggingface.co/google/medgemma-1.5-4b-it) , put it to ./Processing/weights/ and load the model  
 2. Use medgemma-1.5 to extract image embeddings
-```python
-python  feature_extraction.py --nii ./Processing/CT/venous_CT.nii.gz --roi ./Processing/Label/venous_tumor_peritumor_label.nii.gz --out_dir ./Usage/output --k -1  --model  ./Processing/weights/
+```bash
+python Processing/feature_extraction.py \
+  --nii ./Processing/CT/venous_CT.nii.gz \
+  --roi ./Processing/Label/tumor_label-segmentation-2-label.nii.gz \
+  --out_dir ./Usage/output/case_001_tumor \
+  --k -1 \
+  --model ./Processing/weights/
 
-```
+--nii ./Processing/CT/venous_CT.nii.gz                               Path to CT file
+--roi ./Processing/Label/tumor_label-segmentation-2-label.nii.gz     Path to CT-aligned ROI mask file
+--out_dir ./Usage/output/case_001_tumor                              Save output features to this folder
+--k -1                                                               Use all slices containing ROI (no sampling)
+--model ./Processing/weights/                                        MedGemma1.5 HuggingFace model path
 
-```python
---nii ./Processing/CT/venous_CT.nii.gz	                         Path to CT file
---roi ./Processing/Label/venous_tumor_peritumor_label.nii.gz     Path to ROI mask file
---out_dir ./Usage/output                                         Save outputs to out1 folder
---k -1	                                                         Use all slices containing ROI (no sampling)
---model  ./Processing/weights/                                   MedGemma1.5 HuggingFace model path 
-```
 ## Basic Usage: Predict Postoperative Complications Risk with DeepComp
 
 ### Model Download
