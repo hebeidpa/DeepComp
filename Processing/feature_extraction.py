@@ -125,7 +125,7 @@ def main():
     # ROI options
     ap.add_argument("--roi_label", type=int, default=None,
                     help="If set, only extract this label. Otherwise: extract all labels >0")
-    ap.add_argument("--k", type=int, default=16,
+    ap.add_argument("--k", type=int, default=-1,
                     help="Max number of ROI-containing slices to use per ROI (uniform sampling). "
                          "If k<=0, use all ROI slices.")
     ap.add_argument("--pad", type=int, default=0, help="Padding (pixels) around ROI bbox crop")
