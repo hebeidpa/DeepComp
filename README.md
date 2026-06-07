@@ -25,27 +25,26 @@ pip install -r requirements.txt
 ## CT Image Processing Pipeline
 Extract Image Feature Embeddings
 1. Download the pretrained [MedGemma1.5](https://huggingface.co/google/medgemma-1.5-4b-it) , put it to ./Processing/weights/ and load the model  
-```python
-import torch
-from transformers import AutoProcessor, AutoModelForImageTextToText
-model_path = "./Processing/weights"
-processor = AutoProcessor.from_pretrained(model_path)
-model = AutoModelForImageTextToText.from_pretrained(model_path, torch_dtype=torch.float16, device_map="auto").eval()
-vision = model.model.vision_tower
-```
 2. Use medgemma-1.5 to extract image embeddings
 ```python
-import nibabel as nib
-import numpy as np
-ct = ensure_hwd(nib.load("./ct.nii.gz").get_fdata().astype(np.float32), slice_axis=2)
-roi = ensure_hwd(nib.load("./roi_mask.nii.gz").get_fdata(), slice_axis=2)
-roi_int = np.rint(roi).astype(np.int32)
-for lab in sorted([int(x) for x in np.unique(roi_int) if x > 0]):
-    mask = (roi_int == lab).astype(np.uint8)
-    roi_slices = np.where(mask.sum(axis=(0, 1)) > 0)[0]
-    images = [slice_to_rgb(crop_with_pad(ct[..., z], bbox_from_mask(mask[..., z]), pad=10)[0], mode="triple") for z in roi_slices]
-    slice_feats = extract_feats_from_pil_images(images, image_processor, vision, model.device, dtype)
-    roi_feat = torch.nn.functional.normalize(slice_feats.mean(dim=0), dim=-1)  # ROI embedding
+python  feature_extraction.py --nii venous_CT.nii.gz --roi venous_tumor_peritumor_label.nii.gz --out_dir out1  --k -1 --pad 10^C
+
+```
+
+```python
+--nii ./Processing/CT/venous_CT.nii.gz	                        Path to CT file
+```
+```
+--roi ./Processing/Label/venous_tumor_peritumor_label.nii.gz	Path to ROI mask file
+```
+```
+--out_dir out1	                                                Save outputs to out1 folder
+```
+```
+--k -1	                                                        Use all slices containing ROI (no sampling)
+```
+```
+--model  ./Processing/weights/                                  MedGemma1.5 HuggingFace model path 
 ```
 ## Basic Usage: Predict Postoperative Complications Risk with DeepComp
 
