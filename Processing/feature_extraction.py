@@ -4,13 +4,24 @@ import numpy as np
 import pandas as pd
 import nibabel as nib
 from PIL import Image
-
+import random
 import torch
 from transformers import AutoProcessor, AutoModelForImageTextToText
 
-# 本地模型路径
+
 LOCAL_MODEL_PATH = "./Processing/weights/"
 
+def set_seed(seed=42):
+   
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)  # 多GPU
+    # 确保CUDA操作确定性
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    os.environ['PYTHONHASHSEED'] = str(seed)
 
 def window_ct(slice_hu: np.ndarray, wl: float, ww: float) -> np.ndarray:
     """HU -> [0,1] after windowing"""
@@ -121,7 +132,7 @@ def main():
     ap.add_argument("--model", default=LOCAL_MODEL_PATH, help="HF repo id or local folder")
     ap.add_argument("--slice_axis", type=int, default=2, help="0/1/2, which axis is depth")
     ap.add_argument("--rgb_mode", choices=["gray", "triple"], default="triple")
-
+    ap.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
     # ROI options
     ap.add_argument("--roi_label", type=int, default=None,
                     help="If set, only extract this label. Otherwise: extract all labels >0")
@@ -135,7 +146,7 @@ def main():
     args = ap.parse_args()
 
     os.makedirs(args.out_dir, exist_ok=True)
-
+    set_seed(args.seed)
     # ---- device/dtype ----
     device = "cuda" if torch.cuda.is_available() else "cpu"
     dtype = torch.float16 if device == "cuda" else torch.float32
