@@ -42,6 +42,7 @@ python Processing/feature_extraction.py \
 --k -1                                                               Use all slices containing ROI (no sampling)
 --model ./Processing/weights/                                        MedGemma1.5 HuggingFace model path
 ```
+A total of five anatomical regions of interest were delineated, including the primary gastric tumor, the peritumoral region, and three body composition compartments at the L3 vertebral level: skeletal muscle (SMA), subcutaneous adipose tissue (SFA), and visceral adipose tissue (VFA). The radiomic features extracted from these regions were systematically renamed with the following prefixes: yfz* for the primary gastric tumor, lz* for the peritumoral region, ggj* for skeletal muscle (SMA), pxzf* for subcutaneous adipose tissue (SFA), and nzzf* for visceral adipose tissue (VFA).
 
 ## Basic Usage: Predict Postoperative Complications Risk with DeepComp
 
