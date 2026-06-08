@@ -34,13 +34,15 @@ python Processing/feature_extraction.py \
   --k -1 \
   --model ./Processing/weights/
 ```
+
 ```
 --nii ./Processing/CT/venous_CT.nii.gz                               Path to CT file
 --roi ./Processing/Label/tumor_label-segmentation-2-label.nii.gz     Path to CT-aligned ROI mask file
 --out_dir ./Usage/output/case_001_tumor                              Save output features to this folder
 --k -1                                                               Use all slices containing ROI (no sampling)
 --model ./Processing/weights/                                        MedGemma1.5 HuggingFace model path
-```bash
+```
+
 ## Basic Usage: Predict Postoperative Complications Risk with DeepComp
 
 ### Model Download
